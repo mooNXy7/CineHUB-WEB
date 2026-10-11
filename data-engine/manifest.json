@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "engine": "CineHUB Data Engine",
+  "publicationVersion": 1,
+  "generatedAt": "2026-10-11T10:54:45Z",
+  "basePath": "/data-engine/",
+  "atomic": true,
+  "datasets": {
+    "status.json": {
+      "path": "data-engine/status.json",
+      "bytes": 3754,
+      "sha256": "b3934f8739421b4fb81a85c9d64d58e1cd0cd6d1ecc6d7672993173446387d58"
+    },
+    "sources.json": {
+      "path": "data-engine/sources.json",
+      "bytes": 9030,
+      "sha256": "30ba99e15512142fb090158af1500fbf676dcf24b3d44071b934fe35c665d4d6"
+    },
+    "catalog/manifest.json": {
+      "path": "data-engine/catalog/manifest.json",
+      "bytes": 686,
+      "sha256": "ed147af0a5f6d4ca46704baa8f55b5f1f350acb355ea4a9ded5be410b0108ccb"
+    },
+    "catalog/movies.index.json": {
+      "path": "data-engine/catalog/movies.index.json",
+      "bytes": 21178236,
+      "sha256": "014ee11b82315871277049b4d9bd0598913c7d77522602104cb8cf587dd545bf"
+    },
+    "catalog/series.entities.json": {
+      "path": "data-engine/catalog/series.entities.json",
+      "bytes": 2656600,
+      "sha256": "0a4e490f66195e3c1d951139816d2c6fb7551f360b27399143aca07185f9a58e"
+    },
+    "catalog/featured.json": {
+      "path": "data-engine/catalog/featured.json",
+      "bytes": 20129,
+      "sha256": "e859cbd63523b2f5d663b317c79f00920cd037bed0d21d2d0747d01c0dc872f4"
+    },
+    "catalog/trending.json": {
+      "path": "data-engine/catalog/trending.json",
+      "bytes": 10305,
+      "sha256": "f4f3ee7519f785e971205b3b52720649854208bbc114c3d1a8253b2d5fadce2d"
+    },
+    "catalog/releases.json": {
+      "path": "data-engine/catalog/releases.json",
+      "bytes": 20055,
+      "sha256": "3786246f4b3fdb1a6f8e83f58f52bcdec3fd83c02aa286b07f413cfc05b25d91"
+    },
+    "catalog/metadata.json": {
+      "path": "data-engine/catalog/metadata.json",
+      "bytes": 831,
+      "sha256": "7635fb0c22e888a370bd2774c7148fdd4c7918faa79fee59c09c36acc74c5061"
+    },
+    "epg/schedule.index.json": {
+      "path": "data-engine/epg/schedule.index.json",
+      "bytes": 9217507,
+      "sha256": "4fe3991cc04cc1bb522efb24dc58aee97c8a3679eb09a9a8c420a023cf6b8e73"
+    },
+    "epg/status.json": {
+      "path": "data-engine/epg/status.json",
+      "bytes": 884,
+      "sha256": "15ae73ec59ddea29a7703704d93b51068e2dd7ec9442d6048cd30ac0cf567072"
+    }
+  },
+  "capabilities": {
+    "channels": "existing-local-with-remote-source-status",
+    "catalog": "pre-indexed",
+    "series": "series-entities+catalog-metadata",
+    "epg": true,
+    "health": true
+  }
+}
