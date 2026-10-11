@@ -1,0 +1,6 @@
+/data-engine/manifest.json
+  Cache-Control: no-cache, max-age=0, must-revalidate
+/data-engine/status-public.json
+  Cache-Control: no-cache, max-age=0, must-revalidate
+/data-engine/*
+  Cache-Control: public, max-age=60, stale-while-revalidate=300
