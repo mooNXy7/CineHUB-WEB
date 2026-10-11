@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T01:28:36Z",
+  "source": "CineHUB_WEB/dados/conteudo/catalogo",
+  "stats": {
+    "generatedAt": "2026-10-05T01:28:36Z",
+    "sourceFiles": 88,
+    "sourceFilesRead": 88,
+    "items": 293834,
+    "movies": 64015,
+    "series": 229819,
+    "groups": 70,
+    "malformedRecords": 0,
+    "seriesEntities": 9818,
+    "episodes": 229819,
+    "seasons": 16611
+  },
+  "contract": {
+    "movies": "CineHUB_Data/catalog/movies.index.json",
+    "series": "CineHUB_Data/catalog/series.index.json",
+    "featured": "CineHUB_Data/catalog/featured.json",
+    "trending": "CineHUB_Data/catalog/trending.json",
+    "releases": "CineHUB_Data/catalog/releases.json",
+    "seriesEntities": "CineHUB_Data/catalog/series.entities.json",
+    "episodes": "CineHUB_Data/catalog/episodes.index.json"
+  }
+}
