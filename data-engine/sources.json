@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "1.0.0",
+  "registryVersion": 4,
+  "name": "CineHUB Sources Registry",
+  "description": "Registro central das fontes utilizadas pelo CineHUB. Nesta fase ele referencia as fontes existentes sem alterar o pipeline atual.",
+  "refreshPolicy": {
+    "defaultDays": 3,
+    "healthChecksEnabled": true,
+    "automaticPublishingEnabled": true,
+    "healthCheckRetries": 2,
+    "failurePolicy": {
+      "firstFailure": "unknown",
+      "secondFailure": "degraded",
+      "thirdOrMore": "offline"
+    },
+    "publicationMode": "compact-git-compatible",
+    "lastRunAt": "2026-10-08T11:24:52Z"
+  },
+  "sources": [
+    {
+      "id": "ramys-br-01",
+      "name": "IPTV Brasil · BR 01",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR01.m3u8",
+      "enabled": true,
+      "priority": 1,
+      "health": {
+        "status": "offline",
+        "lastChecked": "2026-10-08T11:24:52Z",
+        "latency": null,
+        "httpStatus": null,
+        "error": "response exceeds 26214400 bytes",
+        "consecutiveFailures": 3
+      },
+      "lastFetchedAt": "2026-10-08T11:24:52Z",
+      "lastFetchError": "response exceeds 26214400 bytes",
+      "consecutiveFailures": 3
+    },
+    {
+      "id": "ramys-br-02",
+      "name": "IPTV Brasil · BR 02",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR02.m3u8",
+      "enabled": true,
+      "priority": 2,
+      "health": {
+        "status": "offline",
+        "lastChecked": "2026-10-08T11:24:52Z",
+        "latency": null,
+        "httpStatus": null,
+        "error": "response exceeds 26214400 bytes",
+        "consecutiveFailures": 3
+      },
+      "lastFetchedAt": "2026-10-08T11:24:52Z",
+      "lastFetchError": "response exceeds 26214400 bytes",
+      "consecutiveFailures": 3
+    },
+    {
+      "id": "ramys-br-03",
+      "name": "IPTV Brasil · BR 03",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR03.m3u8",
+      "enabled": true,
+      "priority": 3,
+      "health": {
+        "status": "offline",
+        "lastChecked": "2026-10-08T11:24:52Z",
+        "latency": null,
+        "httpStatus": null,
+        "error": "response exceeds 26214400 bytes",
+        "consecutiveFailures": 3
+      },
+      "lastFetchedAt": "2026-10-08T11:24:52Z",
+      "lastFetchError": "response exceeds 26214400 bytes",
+      "consecutiveFailures": 3
+    },
+    {
+      "id": "ramys-br-04",
+      "name": "IPTV Brasil · BR 04",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR04.m3u8",
+      "enabled": true,
+      "priority": 4,
+      "health": {
+        "status": "offline",
+        "lastChecked": "2026-10-08T11:24:52Z",
+        "latency": null,
+        "httpStatus": null,
+        "error": "response exceeds 26214400 bytes",
+        "consecutiveFailures": 3
+      },
+      "lastFetchedAt": "2026-10-08T11:24:52Z",
+      "lastFetchError": "response exceeds 26214400 bytes",
+      "consecutiveFailures": 3
+    },
+    {
+      "id": "ramys-br-05",
+      "name": "IPTV Brasil · BR 05",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR05.m3u8",
+      "enabled": true,
+      "priority": 5,
+      "health": {
+        "status": "healthy",
+        "lastChecked": "2026-10-08T11:24:52Z",
+        "latency": 92.89,
+        "httpStatus": 200,
+        "error": null,
+        "consecutiveFailures": 0
+      },
+      "lastFetchedAt": "2026-10-08T11:24:52Z",
+      "lastHttpStatus": 200,
+      "contentBytes": 10913,
+      "contentSha256": "81f9b70babfe327685da09ade1d8df2386e84fbd1e224fe16a24bf265d088fc8",
+      "lastContentType": "text/plain; charset=utf-8",
+      "lastFetchError": null,
+      "consecutiveFailures": 0,
+      "changedAt": "2026-10-06T05:17:46Z"
+    },
+    {
+      "id": "ramys-filmes-series",
+      "name": "IPTV Brasil · Filmes/Séries",
+      "kind": "m3u",
+      "scope": "catalog",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/Filmes-Series.m3u8",
+      "enabled": true,
+      "priority": 10,
+      "health": {
+        "status": "offline",
+        "lastChecked": "2026-10-08T11:24:52Z",
+        "latency": null,
+        "httpStatus": null,
+        "error": "response exceeds 26214400 bytes",
+        "consecutiveFailures": 3
+      },
+      "lastFetchedAt": "2026-10-08T11:24:52Z",
+      "lastFetchError": "response exceeds 26214400 bytes",
+      "consecutiveFailures": 3
+    },
+    {
+      "id": "ramys-europa",
+      "name": "IPTV Brasil · Europa",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisEuropa.m3u8",
+      "enabled": true,
+      "priority": 11,
+      "health": {
+        "status": "offline",
+        "lastChecked": "2026-10-08T11:24:52Z",
+        "latency": null,
+        "httpStatus": null,
+        "error": "HTTP Error 404: Not Found",
+        "consecutiveFailures": 3
+      },
+      "lastFetchedAt": "2026-10-08T11:24:52Z",
+      "lastFetchError": "HTTP Error 404: Not Found",
+      "consecutiveFailures": 3
+    },
+    {
+      "id": "ramys-italia",
+      "name": "IPTV Brasil · Itália",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisItalia.m3u8",
+      "enabled": true,
+      "priority": 12,
+      "health": {
+        "status": "offline",
+        "lastChecked": "2026-10-08T11:24:52Z",
+        "latency": null,
+        "httpStatus": null,
+        "error": "HTTP Error 404: Not Found",
+        "consecutiveFailures": 3
+      },
+      "lastFetchedAt": "2026-10-08T11:24:52Z",
+      "lastFetchError": "HTTP Error 404: Not Found",
+      "consecutiveFailures": 3
+    }
+  ],
+  "localSources": [
+    {
+      "id": "cinehub-list-1",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "local",
+      "path": "CineHUB_WEB/dados/listas/1.m3u",
+      "enabled": true
+    },
+    {
+      "id": "cinehub-list-2",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "local",
+      "path": "CineHUB_WEB/dados/listas/2.m3u",
+      "enabled": true
+    },
+    {
+      "id": "cinehub-list-3",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "local",
+      "path": "CineHUB_WEB/dados/listas/3.m3u",
+      "enabled": true
+    },
+    {
+      "id": "cinehub-list-4",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "local",
+      "path": "CineHUB_WEB/dados/listas/4.m3u",
+      "enabled": true
+    },
+    {
+      "id": "cinehub-list-610",
+      "kind": "m3u8",
+      "scope": "channels",
+      "transport": "local",
+      "path": "CineHUB_WEB/dados/listas/610.M3U8",
+      "enabled": true
+    },
+    {
+      "id": "cinehub-europa",
+      "kind": "m3u8",
+      "scope": "channels",
+      "transport": "local",
+      "path": "CineHUB_WEB/dados/listas/CanaisEuropa.m3u8",
+      "enabled": true
+    },
+    {
+      "id": "cinehub-italia",
+      "kind": "m3u8",
+      "scope": "channels",
+      "transport": "local",
+      "path": "CineHUB_WEB/dados/listas/CanaisItalia.m3u8",
+      "enabled": true
+    },
+    {
+      "id": "cinehub-italia-alt",
+      "kind": "m3u",
+      "scope": "channels",
+      "transport": "local",
+      "path": "CineHUB_WEB/dados/listas/CanaisItália.m3u",
+      "enabled": true
+    }
+  ],
+  "externalServices": [
+    {
+      "id": "iptv-org-logos",
+      "kind": "logos",
+      "url": "https://iptv-org.github.io/api/logos.json",
+      "enabled": true
+    },
+    {
+      "id": "tv-logos-brazil",
+      "kind": "logos",
+      "url": "https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/",
+      "enabled": true
+    }
+  ],
+  "epgSources": [
+    {
+      "id": "iptv-org-br-mi-tv",
+      "name": "iptv-org · Brazil / mi.tv",
+      "kind": "xmltv",
+      "scope": "epg",
+      "transport": "remote",
+      "url": "https://iptv-org.github.io/epg/guides/br/mi.tv.epg.xml",
+      "enabled": false,
+      "priority": 99
+    },
+    {
+      "id": "iptv-com-brazil",
+      "name": "IPTV-com · Brazil",
+      "kind": "xmltv",
+      "scope": "epg",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/iptv-com/epg/main/guides/brazil.xml",
+      "enabled": false,
+      "priority": 98
+    },
+    {
+      "id": "brazil-tv-epg",
+      "name": "EPG-Scrapper-BR · merged",
+      "kind": "xmltv",
+      "scope": "epg",
+      "transport": "remote",
+      "url": "https://raw.githubusercontent.com/marcoshimselfxd/EPG-Scrapper-BR/main/epg.xml",
+      "enabled": true,
+      "priority": 1
+    }
+  ]
+}
