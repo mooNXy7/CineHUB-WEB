@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07080b">
+<meta name="description" content="CineHUB — seu universo de filmes, séries e programação.">
+<meta name="color-scheme" content="dark">
+<title>CineHUB</title>
+<link rel="manifest" href="manifest.json">
+<script>
+(function(){
+  try{
+    var mode=localStorage.getItem('cinehub_mode');
+    if(mode==='performance'||mode==='advanced') document.documentElement.classList.add('cinehub-'+mode);
+  }catch(_){}
+})();
+</script>
+
+<link rel="icon" href="assets/logos/favicon-32.png">
+<link rel="stylesheet" href="src/css/main.css">
+</head>
+<body>
+<div class="ambient" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="splash" id="splash" aria-hidden="true"><div class="splash-orb"></div><img src="assets/logos/logo-horizontal.png" alt="CineHUB"><span>Seu universo de entretenimento</span><div class="splash-loader"><i></i></div></div>
+<div class="cinehub-transition-loader" id="transitionLoader" aria-hidden="true"><div class="cinehub-loader-orb"><span></span></div><img src="assets/logos/simbolo.png" alt="" aria-hidden="true"><strong id="transitionLoaderText">Preparando CineHUB…</strong></div>
+
+<header class="topbar glass" id="topbar">
+  <div class="brand"><img src="assets/logos/logo-horizontal.png" alt="CineHUB"></div>
+  <div class="top-actions">
+    <button class="icon-btn press" data-action="search" aria-label="Pesquisar"><span>⌕</span></button>
+    <button class="icon-btn press" data-action="profile" aria-label="Minha conta"><span>◉</span></button>
+  </div>
+</header>
+
+<main id="homeMain">
+<section class="hero" id="homeHero">
+  <div class="hero-bg hero-bg-a" id="heroBgA"></div><div class="hero-bg hero-bg-b" id="heroBgB"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-content">
+    <span class="eyebrow" data-i18n="heroEyebrow">Destaque CineHUB</span>
+    <h1 id="heroTitle">CineHUB</h1>
+    <div class="meta" id="heroMeta"></div>
+    <p id="heroSynopsis"></p>
+    <div class="hero-actions"><button class="primary press" id="heroPlay" data-i18n="watch">▶ Assistir</button><button class="secondary press" id="heroInfo" data-i18n="details">◌ Detalhes</button><button class="secondary press" id="heroTrailer" data-i18n="trailer">▷ Ver trailer</button></div>
+  </div>
+  <div class="hero-dots" id="heroDots" aria-hidden="true"></div>
+</section>
+
+<section class="section" id="continueSection" hidden><div class="section-head"><div><span class="eyebrow">Retomar</span><h2>Continuar assistindo</h2><span class="muted">Volte exatamente de onde parou.</span></div></div><div id="continueRow"></div></section>
+
+<section class="section" id="trendingSection"><div class="section-head"><div><span class="eyebrow">Em alta</span><h2>Tendências</h2><span class="muted">O que está chamando atenção agora.</span></div><button class="text-btn press" data-screen="movies">Ver tudo</button></div><div class="row" id="trendingRow"></div></section><section class="section"><div class="section-head"><div><span class="eyebrow" data-i18n="now">Agora no CineHUB</span><h2 data-i18n="releases">Lançamentos</h2><span class="muted">Filmes que chegaram recentemente.</span></div><button class="text-btn press" data-screen="movies">Ver tudo</button></div><div class="row" id="releaseRow"></div></section><section class="section"><div class="section-head"><div><span class="eyebrow">Séries em alta</span><h2>Novas e populares</h2><span class="muted">Histórias que estão em destaque.</span></div><button class="text-btn press" data-screen="series">Ver séries</button></div><div class="row" id="seriesTrendRow"></div></section>
+
+<section class="section"><div class="section-head"><div><span class="eyebrow" data-i18n="curation">Curadoria</span><h2 data-i18n="forYou">Para você</h2><span class="muted" data-i18n="forYouSub">Escolhas que combinam com seu momento.</span></div></div><div class="row" id="recommendRow"></div></section>
+
+<section class="section"><div class="section-head"><div><span class="eyebrow" data-i18n="explore">Explore</span><h2 data-i18n="discover">Descubra o CineHUB</h2><span class="muted" data-i18n="discoverSub">Três universos, uma experiência.</span></div></div>
+  <div class="explore-grid">
+    <article class="explore-card glass press" data-screen="movies"><div class="explore-art red"><span class="ui-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5.5h14A1.5 1.5 0 0 1 20.5 7v10A1.5 1.5 0 0 1 19 18.5H5A1.5 1.5 0 0 1 3.5 17V7A1.5 1.5 0 0 1 5 5.5Zm2.2 3.1 9.6 3.4-9.6 3.4V8.6Z"/></svg></span></div><div><h3 data-i18n="films">Filmes</h3><p data-i18n="filmsSub">Catálogo organizado por gênero.</p></div><b>→</b></article>
+    <article class="explore-card glass press" data-screen="series"><div class="explore-art blue"><span class="ui-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="5" width="16" height="14" rx="2"/><path d="M8 5V3.5M12 5V3.5M16 5V3.5M7.5 10h9M7.5 14h6"/></svg></span></div><div><h3 data-i18n="series">Séries</h3><p data-i18n="seriesSub">Histórias para acompanhar por temporadas.</p></div><b>→</b></article>
+    <article class="explore-card glass press" data-screen="tv"><div class="explore-art violet"><span class="ui-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="6" width="16" height="11" rx="2"/><path d="M9 21h6M12 17v4M8 3.5l4 2.5 4-2.5"/></svg></span></div><div><h3 data-i18n="tv">Programação</h3><p data-i18n="tvSub">Canais preparados para o futuro.</p></div><b>→</b></article>
+  </div>
+</section>
+
+<section class="section premium-section"><div class="premium-card glass press" data-action="project"><div class="premium-shine"></div><div class="premium-icon">✦</div><div><span class="eyebrow">Projeto em desenvolvimento</span><h2>CineHUB está sendo construído</h2><p>O projeto ainda recebe melhorias. Você pode apoiar e reportar bugs diretamente pelo CineHUB.</p></div><button class="secondary press">Saiba mais</button></div></section>
+
+<section class="section" id="myListSection"><div class="section-head"><div><span class="eyebrow" data-i18n="yourCollection">Sua coleção</span><h2 data-i18n="list">Minha Lista</h2><span class="muted" data-i18n="listSub">Seus favoritos em um só lugar.</span></div></div><div class="row" id="favoritesRow"></div></section>
+</main>
+
+<nav class="dock glass" aria-label="Navegação inferior">
+  <div class="dock-pill"></div>
+  <button class="dock-btn active press" data-dock="home"><strong class="dock-icon"><svg viewBox="0 0 24 24"><path d="m4 10 8-6 8 6v9a1 1 0 0 1-1 1h-5v-6H10v6H5a1 1 0 0 1-1-1v-9Z"/></svg></strong><span>Início</span></button>
+  <button class="dock-btn press" data-dock="community"><strong class="dock-icon"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.3 6.2h11.4A3.3 3.3 0 0 1 21 9.5v5A3.3 3.3 0 0 1 17.7 17H14l-3.2 3v-3H6.3A3.3 3.3 0 0 1 3 14.5v-5a3.3 3.3 0 0 1 3.3-3.3Z"/><path d="M8 11.2h8M8 14h5"/></svg></strong><span>Discord</span></button>
+  <button class="dock-btn press" data-dock="config"><strong class="dock-icon"><svg viewBox="0 0 24 24"><path d="M9.4 4.2 10 2.5h4l.6 1.7 1.5.9 1.8-.4 2 3.5-1.3 1.4v1.8l1.3 1.4-2 3.5-1.8-.4-1.5.9-.6 1.7h-4l-.6-1.7-1.5-.9-1.8.4-2-3.5 1.3-1.4V9.6L4.1 8.2l2-3.5 1.8.4 1.5-.9ZM12 15.2a3.2 3.2 0 1 0 0-6.4 3.2 3.2 0 0 0 0 6.4Z"/></svg></strong><span>Config</span></button>
+</nav>
+
+<section class="screen" id="moviesScreen"><div class="screen-inner"><div class="screen-head"><button class="icon-btn back press" data-close="moviesScreen">←</button><div><span class="eyebrow" data-i18n="catalog">Catálogo</span><h1 data-i18n="films">Filmes</h1><span class="muted" data-i18n="filmsScreenSub">Escolha sua próxima sessão.</span></div></div><div class="search-wrap"><span>⌕</span><input class="search" id="movieSearch" data-i18n-placeholder="searchFilms" placeholder="Pesquisar filmes..." autocomplete="off"></div><div class="catalog-toolbar"><div><span class="eyebrow">Catálogo ampliado</span><p id="movieCatalogMeta">Preparando categorias…</p></div><button class="secondary press" id="movieReload">↻ Atualizar</button></div><div class="chips" id="movieChips"></div><div class="grid" id="movieGrid"></div><button class="secondary press catalog-more" id="movieMore" hidden>Mostrar mais</button></div></section>
+
+<section class="screen" id="seriesScreen"><div class="screen-inner"><div class="screen-head"><button class="icon-btn back press" data-close="seriesScreen">←</button><div><span class="eyebrow" data-i18n="catalog">Catálogo</span><h1 data-i18n="series">Séries</h1><span class="muted" data-i18n="seriesScreenSub">Temporadas, histórias e universos.</span></div></div><div class="search-wrap"><span>⌕</span><input class="search" id="seriesSearch" data-i18n-placeholder="searchSeries" placeholder="Pesquisar séries..." autocomplete="off"></div><div class="chips" id="seriesChips"></div><div class="grid" id="seriesGrid"></div></div></section>
+
+<section class="screen" id="tvScreen"><div class="screen-inner"><div class="screen-head"><button class="icon-btn back press" data-close="tvScreen">←</button><div><span class="eyebrow">Guia online</span><h1 data-i18n="tv">Programação</h1><span class="muted" data-i18n="tvScreenSub">Canais e grades oficiais em um só lugar.</span></div></div>
+<div class="tv-info-notice glass"><span class="notice-icon">i</span><div><strong>Aguarde o carregamento dos canais</strong><p>Para melhor fluidez, recomendamos esperar a lista e os dados do EPG terminarem de carregar. Nem todos os canais possuem programação disponível.</p></div></div>
+<div class="tv-tabs" id="tvTabs"><button class="tv-tab active press" id="tvChannelsTab" data-tv-tab="channels">Canais</button><button class="tv-tab press epg-tab" id="tvGuideTab" data-tv-tab="guide" hidden>Guia EPG <span id="tvGuideCount"></span></button></div>
+<section class="popular-channels glass" id="popularChannelsSection"><div class="section-head"><div><span class="eyebrow">CineHUB</span><h3>Canais recomendados</h3><span class="muted">Canais em destaque encontrados nas listas atuais.</span></div></div><div id="popularChannels" class="channel-grid compact-popular"></div></section><div id="tvChannelsPanel" class="tv-panel active"><div class="tv-live-bar glass"><div><span class="eyebrow" data-i18n="now">Agora</span><h3 id="tvNowTitle">Canais ao vivo</h3><p id="tvNowMeta">Carregando lista de transmissão…</p></div><div class="tv-source-actions"><button class="secondary press" id="tvEpgSource">EPG: Principal</button><button class="secondary press" id="tvExternalSources">＋ Fontes externas</button><button class="secondary press" id="tvRefresh" data-i18n="refresh">↻ Atualizar</button></div></div><div class="search-wrap"><span>⌕</span><input class="search" id="channelSearch" placeholder="Buscar canal..." autocomplete="off"></div><div class="chips" id="channelChips"></div><div class="channel-grid" id="channelGrid"></div><button class="secondary press catalog-more" id="channelMore" hidden>Mostrar mais canais</button></div>
+<div id="tvGuidePanel" class="tv-panel"><div class="guide-toolbar glass"><div><span class="eyebrow">Guia de programação</span><h3>O que está passando</h3><p id="tvGuideMeta">Carregando dados do EPG…</p></div><button class="secondary press" id="tvGuideRefresh">↻ Atualizar</button></div><div class="guide-grid" id="tvGuideGrid"></div></div>
+<div class="tv-note">Os canais externos continuam disponíveis e o EPG é apenas uma camada de informações: ele nunca remove ou substitui canais.</div></div></section>
+
+<section class="screen" id="searchScreen"><div class="screen-inner"><div class="screen-head"><button class="icon-btn back press" data-close="searchScreen">×</button><div><span class="eyebrow" data-i18n="search">Buscar</span><h1 data-i18n="searchTitle">Pesquisar</h1><span class="muted" data-i18n="searchSub">Encontre filmes e séries rapidamente.</span></div></div><div class="search-wrap big"><span>⌕</span><input class="search" id="globalSearch" data-i18n-placeholder="searchAll" placeholder="O que você quer assistir?" autocomplete="off"></div><div class="search-results" id="globalResults"></div></div></section>
+
+<section class="detail" id="detail"><button class="icon-btn close press" data-close="detail">×</button><div class="detail-hero" id="detailHero"><div class="detail-content"><span class="eyebrow" id="detailType"></span><h1 id="detailTitle"></h1><div class="meta" id="detailMeta"></div><p id="detailSynopsis"></p><div class="detail-extra" id="detailExtra"></div><div class="hero-actions"><button class="primary press" id="detailPlay">▶ Assistir</button><button class="secondary press" id="detailFav">♡ Minha Lista</button></div></div></div></section>
+<section class="player" id="player"><button class="icon-btn close press" data-close="player">×</button><div class="player-frame" id="playerFrame"><button class="player-fullscreen press" id="playerFullscreen" aria-label="Expandir player" title="Expandir">⛶</button><div class="player-loading" id="playerLoading"><span></span><p>Preparando reprodução…</p></div><iframe id="megaPlayer" title="CineHUB Player" allow="autoplay; fullscreen; picture-in-picture; encrypted-media" allowfullscreen referrerpolicy="no-referrer" loading="eager"></iframe><video id="video" controls playsinline preload="metadata"></video><div class="player-fallback" id="playerFallback" hidden><div class="player-fallback-icon">!</div><h3>Não foi possível carregar o player</h3><p id="playerFallbackText">A fonte externa não respondeu dentro do CineHUB.</p><div class="player-fallback-actions"><button class="primary press" id="playerRetry">Tentar novamente</button></div></div></div><div class="player-meta" id="playerMeta"></div></section>
+
+<section class="sheet" id="meSheet"><div class="sheet-backdrop" data-close="meSheet"></div><div class="sheet-panel glass"><div class="sheet-handle"></div><div class="sheet-head"><div><span class="eyebrow">Seu espaço</span><h2>Me</h2></div><button class="icon-btn press" data-close="meSheet">×</button></div><div id="meContent"></div></div></section>
+<section class="sheet" id="discordSheet"><div class="sheet-backdrop" data-close="discordSheet"></div><div class="sheet-panel glass community-sheet"><div class="sheet-handle"></div><div class="sheet-head"><div><span class="eyebrow">CineHUB Community</span><h2>Discord</h2></div><button class="icon-btn press" data-close="discordSheet">×</button></div><div class="discord-card"><div class="discord-mark">◈</div><div class="discord-copy"><span class="eyebrow">Sobre nós</span><h3>Nos acompanhe em tempo real</h3><p>Novidades, atualizações, avisos e novidades do CineHUB em um só lugar.</p></div><a class="primary press discord-link" href="https://discord.gg/FVFayvger" target="_blank" rel="noopener noreferrer">Entrar no Discord <span>↗</span></a></div></div></section>
+
+<section class="sheet" id="configSheet"><div class="sheet-backdrop" data-close="configSheet"></div><div class="sheet-panel glass"><div class="sheet-handle"></div><div class="sheet-head"><div><span class="eyebrow">Personalização</span><h2>Configurações</h2></div><button class="icon-btn press" data-close="configSheet">×</button></div><div class="settings-list" id="settingsContent"></div></div></section>
+<section class="sheet" id="tvDetailSheet"><div class="sheet-backdrop" data-close="tvDetailSheet"></div><div class="sheet-panel glass"><div class="sheet-handle"></div><div class="sheet-head"><div><span class="eyebrow">Canal</span><h2 id="tvDetailTitle">Programação</h2></div><button class="icon-btn press" data-close="tvDetailSheet">×</button></div><div id="tvDetailContent"></div></div></section>
+<section class="sheet" id="premiumSheet"><div class="sheet-backdrop" data-close="premiumSheet"></div><div class="sheet-panel glass premium-sheet"><div class="sheet-handle"></div><div class="sheet-head"><div><span class="eyebrow">Futuro CineHUB</span><h2>Premium</h2></div><button class="icon-btn press" data-close="premiumSheet">×</button></div><div class="premium-hero"><div class="premium-icon large">✦</div><h3>Recursos premium em desenvolvimento.</h3><p>Assinaturas e benefícios ainda serão adicionados ao projeto.</p><div class="premium-features"><span>✦ Experiência sem anúncios</span><span>✦ Recursos exclusivos</span><span>✦ Qualidade premium</span></div><button class="primary press" data-close="premiumSheet">Em breve</button></div></div></section>
+<section class="sheet" id="projectSheet"><div class="sheet-backdrop" data-close="projectSheet"></div><div class="sheet-panel glass project-sheet"><div class="sheet-handle"></div><div class="sheet-head"><div><span class="eyebrow">CineHUB</span><h2>Projeto em desenvolvimento</h2></div><button class="icon-btn press" data-close="projectSheet">×</button></div><div class="project-content"><div class="project-mark">✦</div><h3>Ajude a construir o CineHUB</h3><p>O CineHUB está em evolução constante. Bugs podem aparecer enquanto recursos e fontes são ajustados.</p><div class="project-points"><span>• Interface e desempenho em evolução</span><span>• Catálogo e EPG em atualização</span><span>• Relatos ajudam a localizar problemas</span></div><div class="setting-group"><h3>Reportar um bug</h3><textarea id="bugReportText" class="field" rows="5" placeholder="Descreva o que aconteceu, onde aconteceu e o que você esperava."></textarea><div class="form-actions"><button class="primary press full" id="saveBugReport">Registrar relatório</button></div><small class="login-note">O relatório fica salvo localmente neste aparelho; nenhum link externo será aberto.</small></div><button class="secondary press full" data-close="projectSheet">Voltar ao CineHUB</button></div></div></section>
+<section class="system-modal" id="welcomeModal" aria-hidden="true">
+<div class="system-backdrop"></div>
+<div class="system-card glass mode-picker">
+  <div class="system-mark">✦</div>
+  <span class="eyebrow">CineHUB</span>
+  <h2>Bem-vindo ao CineHUB!</h2>
+  <p>Escolha seu modo de navegação. O conteúdo e os recursos continuam os mesmos; muda apenas a forma como a interface é renderizada no seu dispositivo.</p>
+  <div class="mode-options">
+    <button class="mode-option" id="choosePerformance" type="button">
+      <span class="mode-icon">⚡</span>
+      <span><b>Modo Performance</b><small>Interface leve, sólida e fluida. Sem Liquid Glass e sem efeitos pesados — ideal para celulares fracos e Android TV.</small></span>
+      <i>›</i>
+    </button>
+    <button class="mode-option mode-option-featured" id="chooseAdvanced" type="button">
+      <span class="mode-icon">✦</span>
+      <span><b>Modo Avançado</b><small>Experiência CineHUB completa com CINEglass, ambientação e animações graduais — também otimizada.</small></span>
+      <i>›</i>
+    </button>
+  </div>
+  <small class="mode-note">Você verá esta escolha novamente sempre que abrir o CineHUB.</small>
+</div></section>
+
+<div class="toast" id="toast"></div>
+<script src="dados/canais-m3u8.js"></script><script src="dados/conteudo/manifest.js"></script><script src="src/js/webdata.js"></script><script src="src/js/data-engine.js"></script><script src="src/js/integracoes.js"></script><script src="src/js/epg.js"></script><script src="src/js/performance.js" defer></script><script src="src/js/providers/megaembed.js"></script><script src="src/js/largecatalog.js"></script><script src="src/js/motion.js" defer></script>
+<script src="src/js/cinehub.js"></script>
+<script>if('serviceWorker'in navigator){window.addEventListener('load',()=>navigator.serviceWorker.register('service-worker.js').catch(()=>{}));}</script>
+<script src="src/js/ambient.js" defer></script>
+</body></html>
