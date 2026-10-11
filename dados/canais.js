@@ -1,0 +1,9 @@
+const catalogoCanais = [
+ {nome:'TV Globo',logo:'assets/logos/channel-globo.svg',categoria:'Aberta',descricao:'Programação da TV Globo e acesso ao ambiente oficial.',status:'Online',site:'https://redeglobo.globo.com/tvglobo/programacao/',aoVivo:'https://globoplay.globo.com/' ,match:['globo']},
+ {nome:'SBT',logo:'assets/logos/channel-sbt.svg',categoria:'Aberta',descricao:'Programação oficial do SBT e acesso ao conteúdo online.',status:'Online',site:'https://tv.sbt.com.br/programacao',aoVivo:'https://www.sbt.com.br/' ,match:['sbt','sistema brasileiro']},
+ {nome:'RECORD',logo:'assets/logos/channel-record.svg',categoria:'Aberta',descricao:'Grade oficial da RECORD com próximos programas.',status:'Online',site:'https://record.r7.com/programacao/',aoVivo:'https://record.r7.com/' ,match:['record']},
+ {nome:'Band',logo:'assets/logos/channel-band.svg',categoria:'Aberta',descricao:'Programação e conteúdo da Band.',status:'Online',site:'https://www.band.uol.com.br/programacao',aoVivo:'https://www.band.uol.com.br/' ,match:['band']},
+ {nome:'RedeTV!',logo:'assets/logos/channel-redetv.svg',categoria:'Aberta',descricao:'Grade oficial e acesso ao conteúdo online da RedeTV!.',status:'Online',site:'https://www.redetv.uol.com.br/programacao',aoVivo:'https://www.redetv.uol.com.br/aovivo',match:['redetv','rede tv']},
+ {nome:'TV Cultura',logo:'assets/logos/channel-cultura.svg',categoria:'Aberta',descricao:'Roteiro oficial de programação da TV Cultura.',status:'Online',site:'https://www2.tvcultura.com.br/roteiro/',aoVivo:'https://cultura.uol.com.br/ao-vivo/',match:['cultura']},
+ {nome:'TV Brasil',logo:'assets/logos/channel-tvbrasil.svg',categoria:'Aberta',descricao:'Canal público com programação e conteúdos da EBC.',status:'Online',site:'https://tvbrasil.ebc.com.br/',aoVivo:'https://tvbrasil.ebc.com.br/' ,match:['tv brasil','ebc']}
+];
