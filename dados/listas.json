@@ -1,0 +1,89 @@
+{
+  "version": "2.3.1",
+  "refresh_interval_days": 3,
+  "description": "CineHUB external list registry. Main catalog remains unchanged; external sources are lazy-loaded.",
+  "sources": {
+    "remote": [
+      {
+        "id": "ramys-br-01",
+        "name": "IPTV Brasil · BR 01",
+        "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR01.m3u8"
+      },
+      {
+        "id": "ramys-br-02",
+        "name": "IPTV Brasil · BR 02",
+        "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR02.m3u8"
+      },
+      {
+        "id": "ramys-br-03",
+        "name": "IPTV Brasil · BR 03",
+        "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR03.m3u8"
+      },
+      {
+        "id": "ramys-br-04",
+        "name": "IPTV Brasil · BR 04",
+        "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR04.m3u8"
+      },
+      {
+        "id": "ramys-br-05",
+        "name": "IPTV Brasil · BR 05",
+        "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisBR05.m3u8"
+      }
+    ],
+    "catalog": [
+      {
+        "id": "ramys-filmes-series",
+        "name": "IPTV Brasil · Filmes/Séries",
+        "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/Filmes-Series.m3u8"
+      },
+      {
+        "id": "ramys-europa",
+        "name": "IPTV Brasil · Europa",
+        "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisEuropa.m3u8"
+      },
+      {
+        "id": "ramys-italia",
+        "name": "IPTV Brasil · Itália",
+        "url": "https://raw.githubusercontent.com/Ramys/Iptv-Brasil-2026/master/CanaisItalia.m3u8"
+      }
+    ],
+    "local": [
+      {
+        "id": "2.m3u",
+        "path": "dados/listas/2.m3u"
+      },
+      {
+        "id": "3.m3u",
+        "path": "dados/listas/3.m3u"
+      },
+      {
+        "id": "1.m3u",
+        "path": "dados/listas/1.m3u"
+      },
+      {
+        "id": "610.M3U8",
+        "path": "dados/listas/610.M3U8"
+      },
+      {
+        "id": "CanaisEuropa.m3u8",
+        "path": "dados/listas/CanaisEuropa.m3u8"
+      },
+      {
+        "id": "4.m3u",
+        "path": "dados/listas/4.m3u"
+      },
+      {
+        "id": "CanaisItalia.m3u8",
+        "path": "dados/listas/CanaisItalia.m3u8"
+      },
+      {
+        "id": "CanaisItália.m3u",
+        "path": "dados/listas/CanaisItália.m3u"
+      }
+    ]
+  },
+  "logos": {
+    "iptv_org": "https://iptv-org.github.io/api/logos.json",
+    "tv_logos_brazil": "https://raw.githubusercontent.com/tv-logo/tv-logos/main/countries/brazil/"
+  }
+}
