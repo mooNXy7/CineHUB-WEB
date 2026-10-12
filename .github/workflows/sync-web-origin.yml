@@ -1,0 +1,52 @@
+name: Sincronizar CineHUB Web da origem
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: cinehub-web-sync
+  cancel-in-progress: false
+
+jobs:
+  sync-web:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout do repositório Web
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Checkout do repositório original
+        uses: actions/checkout@v4
+        with:
+          repository: mooNXy7/CineHUB
+          ref: main
+          path: .tmp-cinehub-source
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Copiar a pasta CineHUB_WEB para a raiz
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -d .tmp-cinehub-source/CineHUB_WEB
+          rsync -a --delete \
+            --exclude='.git/' \
+            --exclude='.github/workflows/sync-web-origin.yml' \
+            .tmp-cinehub-source/CineHUB_WEB/ ./
+          rm -rf .tmp-cinehub-source
+          git add -A
+          if git diff --cached --quiet; then
+            echo "Nenhuma diferença encontrada."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "Sincroniza CineHUB Web da origem oficial"
+          git push
