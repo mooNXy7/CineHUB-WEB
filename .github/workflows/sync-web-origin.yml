@@ -5,13 +5,9 @@ on:
     branches:
       - main
   workflow_dispatch:
-  issues:
-    types:
-      - opened
 
 permissions:
   contents: write
-  issues: write
 
 concurrency:
   group: cinehub-web-sync
@@ -19,9 +15,6 @@ concurrency:
 
 jobs:
   sync-web:
-    if: >-
-      ${{ github.event_name != 'issues' ||
-          (github.event.issue.title == '[automation] Initial CineHUB Web sync') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositório Web
@@ -95,10 +88,3 @@ jobs:
             git commit -m "Sincroniza CineHUB Web da origem oficial"
             git push
           fi
-
-      - name: Encerrar chamado técnico de disparo
-        if: ${{ github.event_name == 'issues' && github.event.issue.title == '[automation] Initial CineHUB Web sync' }}
-        env:
-          GH_TOKEN: ${{ github.token }}
-          ISSUE_NUMBER: ${{ github.event.issue.number }}
-        run: gh issue close "$ISSUE_NUMBER" --reason completed --repo "$GITHUB_REPOSITORY"
