@@ -46,6 +46,7 @@ jobs:
           test -d "$source_dir"
           rsync -a --delete \
             --exclude='.git/' \
+            --exclude='/.tmp-cinehub-source/' \
             --exclude='.github/workflows/sync-web-origin.yml' \
             "$source_dir/" ./
 
