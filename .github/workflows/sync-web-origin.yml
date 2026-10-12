@@ -5,9 +5,13 @@ on:
     branches:
       - main
   workflow_dispatch:
+  issues:
+    types:
+      - opened
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: cinehub-web-sync
@@ -15,6 +19,9 @@ concurrency:
 
 jobs:
   sync-web:
+    if: >-
+      ${{ github.event_name != 'issues' ||
+          (github.event.issue.title == '[automation] Initial CineHUB Web sync') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout do repositório Web
@@ -31,22 +38,66 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
-      - name: Copiar a pasta CineHUB_WEB para a raiz
+      - name: Sincronizar a pasta CineHUB_WEB para a raiz
         shell: bash
         run: |
           set -euo pipefail
-          test -d .tmp-cinehub-source/CineHUB_WEB
+          source_dir=".tmp-cinehub-source/CineHUB_WEB"
+          test -d "$source_dir"
           rsync -a --delete \
             --exclude='.git/' \
             --exclude='.github/workflows/sync-web-origin.yml' \
-            .tmp-cinehub-source/CineHUB_WEB/ ./
+            "$source_dir/" ./
+
+      - name: Verificar integridade de cada arquivo
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 - <<'PY'
+          from pathlib import Path
+          import hashlib, sys
+          source = Path(".tmp-cinehub-source/CineHUB_WEB")
+          destination = Path(".")
+          expected = sorted(p.relative_to(source).as_posix() for p in source.rglob("*") if p.is_file())
+          problems = []
+          for rel in expected:
+              a, b = source / rel, destination / rel
+              if not b.is_file():
+                  problems.append(f"ausente: {rel}")
+                  continue
+              def digest(path):
+                  h = hashlib.sha256()
+                  with path.open("rb") as f:
+                      for chunk in iter(lambda: f.read(1024 * 1024), b""):
+                          h.update(chunk)
+                  return h.hexdigest()
+              if a.stat().st_size != b.stat().st_size or digest(a) != digest(b):
+                  problems.append(f"diferente: {rel}")
+          if problems:
+              print("\n".join(problems))
+              print(f"FALHA: {len(problems)} arquivo(s) divergente(s), esperado(s) {len(expected)}.")
+              sys.exit(1)
+          print(f"OK: {len(expected)} arquivos comparados byte a byte (SHA-256).")
+          PY
+
+      - name: Commit da sincronização
+        shell: bash
+        run: |
+          set -euo pipefail
           rm -rf .tmp-cinehub-source
           git add -A
           if git diff --cached --quiet; then
             echo "Nenhuma diferença encontrada."
-            exit 0
+          else
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Sincroniza CineHUB Web da origem oficial"
+            git push
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit -m "Sincroniza CineHUB Web da origem oficial"
-          git push
+
+      - name: Encerrar chamado técnico de disparo
+        if: ${{ github.event_name == 'issues' && github.event.issue.title == '[automation] Initial CineHUB Web sync' }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+        run: gh issue close "$ISSUE_NUMBER" --reason completed --repo "$GITHUB_REPOSITORY"
