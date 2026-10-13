@@ -14,3 +14,6 @@ Repositório oficial e independente da versão WEB do CineHUB.
 O Cloudflare Pages deve publicar os arquivos deste repositório diretamente a partir da raiz. Não sincronizar mais a pasta `CineHUB_WEB` do repositório mobile.
 
 As listas grandes de IPTV que ultrapassam o limite de arquivos do Pages devem continuar sendo consumidas por fontes remotas, conforme o registro de fontes do projeto.
+
+
+Cloudflare deployment trigger: every push to `main` is included by the Pages source path filter (`**`).
