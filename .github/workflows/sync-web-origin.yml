@@ -1,90 +1,42 @@
-name: Sincronizar CineHUB Web da origem
+name: Validate CineHUB WEB
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
-  contents: write
-
-concurrency:
-  group: cinehub-web-sync
-  cancel-in-progress: false
+  contents: read
 
 jobs:
-  sync-web:
+  validate:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout do repositório Web
+      - name: Checkout CineHUB WEB
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 1
 
-      - name: Checkout do repositório original
-        uses: actions/checkout@v4
-        with:
-          repository: mooNXy7/CineHUB
-          ref: main
-          path: .tmp-cinehub-source
-          fetch-depth: 1
-          persist-credentials: false
-
-      - name: Sincronizar a pasta CineHUB_WEB para a raiz
+      - name: Validate site structure and syntax
         shell: bash
         run: |
           set -euo pipefail
-          source_dir=".tmp-cinehub-source/CineHUB_WEB"
-          test -d "$source_dir"
-          rsync -a --delete \
-            --exclude='.git/' \
-            --exclude='/.tmp-cinehub-source/' \
-            --exclude='.github/workflows/sync-web-origin.yml' \
-            "$source_dir/" ./
-
-      - name: Verificar integridade de cada arquivo
-        shell: bash
-        run: |
-          set -euo pipefail
+          test -s index.html
+          test -s manifest.json
+          test -s service-worker.js
+          test -d src/css
+          test -d src/js
+          test -d dados
           python3 - <<'PY'
           from pathlib import Path
-          import hashlib, sys
-          source = Path(".tmp-cinehub-source/CineHUB_WEB")
-          destination = Path(".")
-          expected = sorted(p.relative_to(source).as_posix() for p in source.rglob("*") if p.is_file())
-          problems = []
-          for rel in expected:
-              a, b = source / rel, destination / rel
-              if not b.is_file():
-                  problems.append(f"ausente: {rel}")
-                  continue
-              def digest(path):
-                  h = hashlib.sha256()
-                  with path.open("rb") as f:
-                      for chunk in iter(lambda: f.read(1024 * 1024), b""):
-                          h.update(chunk)
-                  return h.hexdigest()
-              if a.stat().st_size != b.stat().st_size or digest(a) != digest(b):
-                  problems.append(f"diferente: {rel}")
-          if problems:
-              print("\n".join(problems))
-              print(f"FALHA: {len(problems)} arquivo(s) divergente(s), esperado(s) {len(expected)}.")
-              sys.exit(1)
-          print(f"OK: {len(expected)} arquivos comparados byte a byte (SHA-256).")
+          import json, subprocess
+          root = Path('.')
+          json_files = list(root.rglob('*.json'))
+          for path in json_files:
+              json.loads(path.read_text(encoding='utf-8'))
+          js_files = list(root.rglob('*.js'))
+          for path in js_files:
+              subprocess.run(['node', '--check', str(path)], check=True)
+          print(f'Valid JSON files: {len(json_files)}')
+          print(f'JavaScript syntax checks: {len(js_files)}')
           PY
-
-      - name: Commit da sincronização
-        shell: bash
-        run: |
-          set -euo pipefail
-          rm -rf .tmp-cinehub-source
-          git add -A
-          if git diff --cached --quiet; then
-            echo "Nenhuma diferença encontrada."
-          else
-            git config user.name "github-actions[bot]"
-            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git commit -m "Sincroniza CineHUB Web da origem oficial"
-            git push
-          fi
